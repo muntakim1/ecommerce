@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
-from .models import Product
+from .models import Product, Cart
 from django.contrib.auth.decorators import login_required
 
 
@@ -11,7 +11,7 @@ def index(request):
     return render(request, "index.html", {'products': product, 'newarrival': new_arrival})
 
 
-def Cart(request):
+def Cart_View(request):
     products = Product.objects.filter(category=request.GET.get('category'))
 
     mycontext = {
