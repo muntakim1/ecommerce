@@ -1,9 +1,9 @@
 # ecommerce
 
-# # create A virtualenv
+## create A virtualenv
 
-# # Activate virtualenv
+## Activate virtualenv
 
-# # install dependencies
+## install dependencies
 
-# # Run server
+## Run server
