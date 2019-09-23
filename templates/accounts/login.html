@@ -1,0 +1,35 @@
+{% load static %}
+{% include 'Heads&foots/header.html' %}
+
+  {% block ExtraStyle %}
+      <link rel="stylesheet" href="{% static 'css/customStyle.css' %}">
+  {% endblock %}
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="{% static '/images/giphy.gif' %}" id="icon" alt="Login" />
+    </div>
+
+    <!-- Login Form -->
+    <form method="post">
+        {% csrf_token %}
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" >
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+
+
+
+{% include 'Heads&foots/footer.html' %}

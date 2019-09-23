@@ -1,0 +1,43 @@
+.navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+div.breadcrumbs {
+    background: #1a2ab4ab;
+    padding: 10px 40px;
+    border: none;
+    font-size: 14px;
+    color: #c4dce8;
+    text-align: left;
+}
+.module h2 {
+    background: #6570cd;
+}
+.btn{
+    padding-top: 5px;
+
+}
+.module h2, .module caption, .inline-group h2{
+    background: #1a2ab4ab;
+}
+#user-tools a {
+     border-bottom: none;
+}
+#user-tools a:focus, #user-tools a:hover{
+        color: rgba(255,255,255,.75);
+}
+#branding h1, #branding h1 a:link, #branding h1 a:visited{
+    color:white;
+}
+.navbar-dark .navbar-brand{
+     color:white;
+}
+.delete-confirmation form .cancel-link{
+        text-align: center;
+        height: 42px;
+}
+.submit-row a.deletelink{
+    height: 35px;
+}
+forms.submit-row a.deletelink{
+    height: 35px;
+}
