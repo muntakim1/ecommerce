@@ -33,146 +33,74 @@
           </div>
         </div>
     		<div class="row">
+
+
+
+
     			<div class="col-md-12">
     				<div class="product-slider owl-carousel ftco-animate">
+                     {% for x in products %}
     					<div class="item">
+
+
+
 		    				<div class="product">
-		    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
-		    						<span class="status">30%</span>
-		    					</a>
-		    					<div class="text pt-3 px-3">
-		    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-		    						<div class="d-flex">
-		    							<div class="pricing">
-			    							<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
-			    						</div>
-			    						<div class="rating">
-			    							<p class="text-right">
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    							</p>
-			    						</div>
-		    						</div>
+
+                        <a href="{{ x.get_absolute_url }}" class="img-prod"><img class="img-fluid" src="{{ x.images.url }}" alt="Product Image">
+    						{% if x.discount != 0 and  x.available == True and x.new_Arraivel == False %}
+    						<span class="status" style="background-color: #de5270; color: white;">- {{ x.discount }}%</span>
+    						{% elif x.available == True and x.new_Arraivel == True %}
+                                <span class="status" style="background-color: #ff6b5b;color: #fff;">New Arrival</span>
+                            {% else %}
+                                <span class="status" style="background-color: #000; color: #fff;">Out of stock</span>
+                            {% endif %}
+
+    					</a>
+    					<div class="text py-3 px-3">
+    						<h3><a href="{{ x.get_absolute_url }}">{{ x.Product_name }}</a></h3>
+    						<div class="d-flex">
+    							<div class="pricing">
+
+                                        {% if x.discount != 0 %}
+                                            <p class="price"><span class="mr-2 price-dc">${{ x.UnitPrice }}</span>
+                                                <span class="price-sale" id="price" ></span>
+                                                 <script>
+                                                    var p = {{ x.discount }};
+                                                    var j = {{ x.UnitPrice }};
+                                                    var m = j-((j*p)/100);
+                                                    document.getElementById('price').innerHTML ='$'+  m;
+                                                </script>
+                                            </p>
+                                            {% else %}
+                                            <p class="price"><span class="mr-2 price">${{ x.UnitPrice }}</span></p>
+                                        {% endif %}
+
+
 		    					</div>
-		    				</div>
+		    					<div class="rating">
+	    							<p class="text-right">
+                                    {% with ''|center:x.stars as range %}
+	    								{% for i in range %}
+
+	    								        <span class="ion-ios-star" style="color: orange;"></span>
+
+                                        {% endfor %}
+                                    {% endwith %}
+	    							</p>
+	    						</div>
+	    					</div>
+
+    					</div>
+
+    				</div>
+
 	    				</div>
-	    				<div class="item">
-		    				<div class="product">
-		    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template"></a>
-		    					<div class="text pt-3 px-3">
-		    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-		    						<div class="d-flex">
-		    							<div class="pricing">
-				    						<p class="price"><span>$120.00</span></p>
-				    					</div>
-				    					<div class="rating">
-			    							<p class="text-right">
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    							</p>
-			    						</div>
-			    					</div>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="product">
-		    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template"></a>
-		    					<div class="text pt-3 px-3">
-		    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-		    						<div class="d-flex">
-		    							<div class="pricing">
-				    						<p class="price"><span>$120.00</span></p>
-				    					</div>
-				    					<div class="rating">
-			    							<p class="text-right">
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    							</p>
-			    						</div>
-			    					</div>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="product">
-		    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template"></a>
-		    					<div class="text pt-3 px-3">
-		    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-		    						<div class="d-flex">
-		    							<div class="pricing">
-				    						<p class="price"><span>$120.00</span></p>
-				    					</div>
-				    					<div class="rating">
-			    							<p class="text-right">
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    							</p>
-			    						</div>
-			    					</div>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="product">
-		    					<a href="#" class="img-prod"><img src="images/product-5.jpg" alt="Colorlib Template">
-			    					<span class="status">30%</span>
-			    				</a>
-		    					<div class="text pt-3 px-3">
-		    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-		    						<div class="d-flex">
-		    							<div class="pricing">
-			    							<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
-			    						</div>
-			    						<div class="rating">
-			    							<p class="text-right">
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    							</p>
-			    						</div>
-		    						</div>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="product">
-		    					<a href="#" class="img-prod"><img src="images/product-6.jpg" alt="Colorlib Template"></a>
-		    					<div class="text pt-3 px-3">
-		    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-		    						<div class="d-flex">
-		    							<div class="pricing">
-				    						<p class="price"><span>$120.00</span></p>
-				    					</div>
-				    					<div class="rating">
-			    							<p class="text-right">
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    								<span class="ion-ios-star-outline"></span>
-			    							</p>
-			    						</div>
-			    					</div>
-		    					</div>
-		    				</div>
-	    				</div>
+                        {% endfor %}
+
+
     				</div>
     			</div>
+
     		</div>
     	</div>
     </section>
@@ -211,112 +139,59 @@
     	</div>
     	<div class="container-fluid">
     		<div class="row">
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
+    			{% for x in newarrival %}
+    			<div class="col-sm col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template"></a>
+
+                        <a href="{{ x.get_absolute_url }}" class="img-prod"><img class="img-fluid" src="{{ x.images.url }}" alt="Product Image">
+    						{% if x.discount != 0 and  x.available == True and x.new_Arraivel == False %}
+    						<span class="status" style="background-color: #de5270; color: white;">- {{ x.discount }}%</span>
+    						{% elif x.available == True and x.new_Arraivel == True %}
+                                <span class="status" style="background-color: #ff6b5b;color: #fff;">New Arrival</span>
+                            {% else %}
+                                <span class="status" style="background-color: #000; color: #fff;">Out of stock</span>
+                            {% endif %}
+
+    					</a>
     					<div class="text py-3 px-3">
-    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
+    						<h3><a href="{{ x.get_absolute_url }}">{{ x.Product_name }}</a></h3>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
+
+                                        {% if x.discount != 0 %}
+                                            <p class="price"><span class="mr-2 price-dc">${{ x.UnitPrice }}</span>
+                                                <span class="price-sale" id="price" ></span>
+                                                 <script>
+                                                    var p = {{ x.discount }};
+                                                    var j = {{ x.UnitPrice }};
+                                                    var m = j-((j*p)/100);
+                                                    document.getElementById('price').innerHTML ='$'+  m;
+                                                </script>
+                                            </p>
+                                            {% else %}
+                                            <p class="price"><span class="mr-2 price">${{ x.UnitPrice }}</span></p>
+                                        {% endif %}
+
+
 		    					</div>
 		    					<div class="rating">
 	    							<p class="text-right">
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
+                                    {% with ''|center:x.stars as range %}
+	    								{% for i in range %}
+
+	    								        <span class="ion-ios-star" style="color: orange;"></span>
+
+                                        {% endfor %}
+                                    {% endwith %}
 	    							</p>
 	    						</div>
 	    					</div>
-	    					<hr>
-    						<p class="bottom-area d-flex">
-    							<a href="#" class="add-to-cart"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="ml-auto"><span><i class="ion-ios-heart-empty"></i></span></a>
-    						</p>
+
     					</div>
+
     				</div>
     			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template"></a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
-		    					</div>
-		    					<div class="rating">
-	    							<p class="text-right">
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    							</p>
-	    						</div>
-	    					</div>
-	    					<hr>
-    						<p class="bottom-area d-flex">
-    							<a href="#" class="add-to-cart"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="ml-auto"><span><i class="ion-ios-heart-empty"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template"></a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
-		    					</div>
-		    					<div class="rating">
-	    							<p class="text-right">
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    							</p>
-	    						</div>
-	    					</div>
-	    					<hr>
-    						<p class="bottom-area d-flex">
-    							<a href="#" class="add-to-cart"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="ml-auto"><span><i class="ion-ios-heart-empty"></i></span></a>
-    						</p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg ftco-animate">
-    				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template"></a>
-    					<div class="text py-3 px-3">
-    						<h3><a href="#">Young Woman Wearing Dress</a></h3>
-    						<div class="d-flex">
-    							<div class="pricing">
-		    						<p class="price"><span>$120.00</span></p>
-		    					</div>
-		    					<div class="rating">
-	    							<p class="text-right">
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    								<span class="ion-ios-star-outline"></span>
-	    							</p>
-	    						</div>
-	    					</div>
-	    					<hr>
-    						<p class="bottom-area d-flex">
-    							<a href="#" class="add-to-cart"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-    							<a href="#" class="ml-auto"><span><i class="ion-ios-heart-empty"></i></span></a>
-    						</p>
-    					</div>
+   {% endfor %}
     				</div>
     			</div>
     		</div>
@@ -522,7 +397,7 @@
     	</div>
     </section>
 
-    <section class="ftco-section bg-light ftco-services">
+    <section class="ftco-section bg-light ftco-services" id="section-faq">
     	<div class="container">
     		<div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ftco-animate">
@@ -568,7 +443,7 @@
     	</div>
     </section>
 		
-		<section class="ftco-section-parallax">
+    <section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
         <div class="container">
           <div class="row d-flex justify-content-center py-5">

@@ -41,7 +41,7 @@ class Product(models.Model):
 
 # Cart
 class Cart(models.Model):
-    Product_Code = models.CharField(max_length=20)
+    product = models.OneToOneField(Product,on_delete=models.CASCADE)
     Cart_Price = models.DecimalField(max_digits=4, decimal_places=2)
     Cart_Quantity = models.IntegerField()
     size = models.CharField(max_length=240, default="small")

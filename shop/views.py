@@ -6,16 +6,23 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    product = Product.objects.filter(Trending=True)
+    new_arrival = Product.objects.filter(new_Arraivel=True)
+    return render(request, "index.html", {'products': product, 'newarrival': new_arrival})
 
 
 def Cart(request):
-    return render(request, "pages/cart.html")
+    products = Product.objects.filter(category=request.GET.get('category'))
+
+    mycontext = {
+        'products': products
+    }
+    return render(request, "pages/cart.html", mycontext)
 
 
 def Shop(request):
     product = Product.objects.all()
-    paginator = Paginator(product, 1)
+    paginator = Paginator(product, 10)
     page = request.GET.get('page')
     products = paginator.get_page(page)
     context = {
