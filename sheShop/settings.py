@@ -74,14 +74,24 @@ WSGI_APPLICATION = 'sheShop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#Production
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'sheshop',
+#         'USER': 'postgres',
+#         'PASSWORD': 'pranto172472',
+#         'PORT': '',
+#         'HOST': 'localhost'
+#     }
+# }
+
+#Development
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sheshop',
-        'USER': 'postgres',
-        'PASSWORD': 'pranto172472',
-        'PORT': '',
-        'HOST': 'localhost'
+    'default':{
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR,'db.sqlite3')
     }
 }
 
