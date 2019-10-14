@@ -1,6 +1,10 @@
 {% load static %}
 {% include 'Heads&foots/header.html' %}
+{% block ExtraStyle %}
 
+<script src="./cart.js"></script>
+
+{% endblock ExtraStyle %}
 
 		
 		<div class="hero-wrap js-fullheight" style="background-image: url({% static  'images/bg_1.jpg' %});">
@@ -69,6 +73,7 @@
                                                     var j = {{ x.UnitPrice }};
                                                     var m = j-((j*p)/100);
                                                     document.getElementById('price').innerHTML ='$'+  m;
+													
                                                 </script>
                                             </p>
                                             {% else %}
@@ -87,7 +92,11 @@
                                         {% endfor %}
                                     {% endwith %}
 	    							</p>
-	    						</div>
+								</div>
+				
+								<div class="ml-2 mb-1">
+									<a href="#" data-name= {{ x.Product_name }} data-price={{ x.UnitPrice }}  class="add-to-cart btn btn-primary">Add to cart</a>
+								</div>
 	    					</div>
 
     					</div>
@@ -185,6 +194,9 @@
                                     {% endwith %}
 	    							</p>
 	    						</div>
+								<div class="ml-2 mb-1">
+									<a href="#" data-name= {{ x.Product_name }} data-price={{ x.UnitPrice }}  class="add-to-cart btn btn-primary">Add to cart</a>
+								</div>
 	    					</div>
 
     					</div>

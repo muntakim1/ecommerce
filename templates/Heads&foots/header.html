@@ -29,7 +29,12 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-      {% endblock %}
+      
+    <style>
+    .show-cart li {
+    display: flex;
+  }</style>
+    {% endblock %}
   {% block ExtraStyle %}
   {% endblock %}
   </head>
@@ -58,8 +63,8 @@
 	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="{% url 'shop' %}" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="{% url 'cart' %}" id="cart" class="nav-link">
-                  <span class="icon-shopping_cart"></span> Cart</a>
+	          <li class="nav-item cta"><a href="/" class="nav-link" data-toggle="modal" data-target="#cart">
+                  <span class="icon-shopping_cart"></span> Cart [<span class="total-count"></span>]</a>
               </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item"><img width="56px" height="56px" style="padding: 10%" src=" {{ user.profile.image.url }}"></li>
@@ -77,5 +82,29 @@
 	        </ul>
 	      </div>
 	    </div>
-	  </nav>
+    </nav>
+
+    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="show-cart table">
+              
+            </table>
+            <div>Total price: $<span class="total-cart"></span></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Order now</button>
+          </div>
+        </div>
+      </div>
+      </div> 
+
     <!-- END nav -->
