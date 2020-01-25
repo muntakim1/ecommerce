@@ -71,14 +71,15 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="{% url 'profile' %}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.get_username }}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="{% url 'logout' %}">profile</a>
               	<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
               </div>
                 </li>
 
                 {% else %}
-                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+                    <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login / Register</a></li>
                 {% endif %}
-
+              
 	        </ul>
 	      </div>
 	    </div>
