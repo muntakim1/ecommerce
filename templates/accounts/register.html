@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
+{% include 'Heads&foots/header.html' %}
 
-</body>
-</html>
+  {% block ExtraStyle %}
+      <link rel="stylesheet" href="{% static 'css/formuser.css' %}">
+  {% endblock %}
+
+<br>
+<br>
+<br>
+<br>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="{% static '/images/giphy.gif' %}" id="icon" alt="Login" />
+    </div>
+
+    <!-- Login Form -->
+    <form method="post">
+        {% csrf_token %}
+                {{ form.as_p }}
+                 
+                  <input type="submit" name="submit" value="Register" />
+      
+    </form>
+      <a class="btn btn-primary mb-2" href="{% url 'login' %}">login</a>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+
+
+
+{% include 'Heads&foots/footer.html' %}

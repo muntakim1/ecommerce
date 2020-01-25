@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from .models import Profile
-
+from django.contrib.auth.forms import UserCreationForm
 
 def login_view(request):
     if request.method == 'POST':
@@ -23,7 +23,18 @@ def login_view(request):
     form = AuthenticationForm()
 
     return render(request, "accounts/login.html", context={'form': form})
-
+def register_view(request):
+    if request.method == 'POST':
+        f = UserCreationForm(request.POST)
+        if f.is_valid():
+            f.save()
+            messages.success(request, 'Account created successfully')
+            return redirect('login')
+ 
+    else:
+        f = UserCreationForm()
+ 
+    return render(request, 'accounts/register.html', {'form': f})
 
 def logout_view(request):
     logout(request)
@@ -32,8 +43,11 @@ def logout_view(request):
 
 
 def profile_view(request):
+    
     profile = Profile.objects.all()
+    
     mycontext = {
-        'profile': profile
+        'profile': profile,
+        
     }
     return render(request, "accounts/profile.html", mycontext)

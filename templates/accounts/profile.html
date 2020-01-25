@@ -1,5 +1,135 @@
+{% load static %}
 {% include 'Heads&foots/header.html' %}
 
 
+		
+		<div class="hero-wrap hero-bread" style="background-image: url('{% static 'images/bg_6.jpg' %}');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Profile</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'profile' %}">Home</a></span> <span>Profile</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+		{% for x in profile %}
+        
+		<section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 ftco-animate">
+          
+          <div class="row">
+          <div class="col-md-6">
+          <img src="{{x.image}}" height=300 weight=300> 
+          
+          </div>
+          <div class="col-md-6">
+          <table class="table">
+    <thead>
+      <tr>
+        <th>Total Buy</th>
+        <th>Last Buy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12000 tk</td>
+        <td>12999 tk</td>
+        
+      </tr>
+      <tr>
+        <td>2100 tk</td>
+        <td>4200 tk</td>
+        
+      </tr>
+    </tbody>
+  </table>
+          
+          </div>
+          </div>
+		<form action="{% url 'profile' %}" method="post" class="billing-form bg-light p-3 p-md-5">
+        {% csrf_token %}
+							<h3 class="mb-4 billing-heading">Profile Details</h3>
+	          	<div class="row align-items-end">
+	          		<div class="col-md-12">
+	                <div class="form-group">
+	                	<label for="firstname">User Name</label>
+	                  <input type="text" class="form-control" value="{{x.user}}" disabled>
+	                </div>
+	              </div>
+                  <div class="col-md-12">
+	                <div class="form-group">
+	                	<label for="firstname">Full Name</label>
+	                  <input name="fullname" type="text" class="form-control" value="{{x.full_name}}">
+	                </div>
+	              </div>
+	              
+                <div class="w-100"></div>
+		            <div class="col-md-12">
+		            	<div class="form-group">
+		            		<label name="country" for="country">State / Country</label>
+		            		
+		                  <input type="text" class="form-control" value="{{x.country}}">
+		                
+		            	</div>
+		            </div>
+		            <div class="w-100"></div>
+		            <div class="col-md-12">
+		            	<div class="form-group">
+	                	<label for="streetaddress">Street Address</label>
+	                  <input name="address" type="text" class="form-control" value="{{x.address}}">
+	                </div>
+		            </div>
+		            
+		            </div>
+		            
+		            <div class="col-md-12">
+		            	<div class="form-group">
+	                	<label for="towncity">Town / City</label>
+	                  <input name="city" type="text" class="form-control" value="{{x.city}}">
+	                </div>
+		            </div>
+		            <div class="col-md-12">
+		            	<div class="form-group">
+		            		<label for="postcodezip">Postcode / ZIP *</label>
+	                  <input name="zipcode" type="text" class="form-control" value="{{x.zipcode}}">
+	                </div>
+		            </div>
+		            <div class="w-100"></div>
+		            <div class="col-md-12">
+	                <div class="form-group">
+	                	<label for="phone">Phone</label>
+	                  <input name="phone" type="tel" class="form-control" value="{{x.phone}}">
+	                </div>
+	              </div>
+	              <div class="col-md-12">
+	                <div class="form-group">
+	                	<label for="emailaddress">Email Address</label>
+	                  <input name="email" type="email" class="form-control" value="{{x.email}}">
+	                </div>
+                </div>
+                <div class="w-100"></div>
+                
+                <input type="submit" class="btn btn-primary fadeIn fourth" value="Update ">
+                	
+                </div>
+	            </div>
+	          </form><!-- END -->
+
+
+
+	          
+	          
+	          	</div>
+	          </div>
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
+    </section> <!-- .section -->
+{% endfor %}
+ 
 
 {% include 'Heads&foots/footer.html' %}
+
