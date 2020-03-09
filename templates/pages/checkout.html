@@ -1,5 +1,5 @@
 {% load static %}
-{% include 'Heads&foots/header.html' %}
+{% include 'Headsfoots/header.html' %}
 
 
 		
@@ -311,13 +311,31 @@
       </div>
     </section>
 
-{% include 'Heads&foots/footer.html' %}
+{% include 'Headsfoots/footer.html' %}
 
 {% block Extrascript %}
   <script>
-		$(document).ready(function(){
 
-		var quantitiy=0;
+
+cart = [];
+
+  // Constructor
+  function Item(name, price, count) {
+    this.name = name;
+    this.price = price;
+    this.count = count;
+  }
+
+  function loadCart() {
+    cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+  }
+
+  if (sessionStorage.getItem("shoppingCart") != null) {
+    loadCart();
+  }
+	$(document).ready(function(){
+
+		var quantitiy=cart[item].count;
 		   $('.quantity-right-plus').click(function(e){
 		        
 		        // Stop acting like a button

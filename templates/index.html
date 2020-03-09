@@ -1,12 +1,36 @@
 {% load static %}
-{% include 'Heads&foots/header.html' %}
+{% include 'Headsfoots/header.html' %}
 {% block ExtraStyle %}
 
-<script src="./cart.js"></script>
 
 {% endblock ExtraStyle %}
 
-		
+
+ {% if user.is_authenticated  %} 
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <img class="modal-title " id="exampleModalLongTitle" src="{% static 'images/shoppin_welcome.gif'%}" width="200" height="200" alt="" style="margin:auto">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+       		<h3>Welcome "{{ user.get_username}}" to SHESHOP</h3> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+ {% endif %}
+
+
+
+
 		<div class="hero-wrap js-fullheight" style="background-image: url({% static  'images/bg_1.jpg' %});">
       <div class="overlay"></div>
       <div class="container">
@@ -479,4 +503,12 @@
     </section>
 
 
-{% include 'Heads&foots/footer.html' %}
+{% include 'Headsfoots/footer.html' %}
+{% block Extrascript %}
+
+<script>
+    $(document).ready(function(){
+        $("#exampleModalCenter").modal('show');
+    });
+</script>
+    {% endblock %}

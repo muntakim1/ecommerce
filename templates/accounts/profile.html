@@ -1,5 +1,5 @@
 {% load static %}
-{% include 'Heads&foots/header.html' %}
+{% include 'Headsfoots/header.html' %}
 
 
 		
@@ -55,8 +55,10 @@
 	          	<div class="row align-items-end">
 	          		<div class="col-md-12">
 	                <div class="form-group">
-	                	<label for="firstname">User Name</label>
-	                  <input type="text" class="form-control" value="{{x.user}}" disabled>
+						<label for="firstname">User Name</label>
+						{% if user.is_authenticated %}
+					  <input type="text" class="form-control" value="{{ user.get_username}}" disabled>
+					  {% endif%}
 	                </div>
 	              </div>
                   <div class="col-md-12">
@@ -131,5 +133,5 @@
 {% endfor %}
  
 
-{% include 'Heads&foots/footer.html' %}
+{% include 'Headsfoots/footer.html' %}
 
