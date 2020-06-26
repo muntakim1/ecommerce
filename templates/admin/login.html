@@ -8,7 +8,11 @@
 <style>
 body.login{
     height: 100%;
-    background-image: url('https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fhdbackgroundspic.com%2Fwp-content%2Fuploads%2F2016%2F09%2Frainbow-texture-image-hd.jpg&f=1')    
+    background-image: url('https://image.freepik.com/free-vector/watercolor-artistic-background-design_23-2148503666.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
 }
 .login #container{
     background: #7c9c8c9c;
@@ -50,7 +54,7 @@ a:link, a:visited{
 
 <div class="container">
 
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and not user.is_superuser  %}
     <p class="errornote">
         {% blocktrans trimmed %}
         You are authenticated as {{ username }}, but are not authorized to
