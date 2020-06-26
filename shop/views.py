@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Cart
+from .models import Product, Cart,OderTracking
 from django.contrib.auth.decorators import login_required
 
 
@@ -35,10 +35,21 @@ def About(request):
     return render(request, "pages/about.html")
 
 
-@login_required(login_url="/accounts/login/")
+@login_required(login_url="/login/")
 def CheckOut(request):
-    return render(request, "pages/checkout.html")
+    products = Product.objects.all()
+    context = {
+        'products': products
+    }
+    return render(request, "pages/checkout.html",context)
 
+@login_required(login_url="/login/")
+def OrderStatus(request):
+    Ordertracker = OderTracking.objects.filter()
+    context ={
+        'OderTracking':Ordertracker
+    }
+    return render(request, "accounts/ProductDeliveryStatus.html",context)
 
 def Product_Details(request, id, Product_slug):
     product = get_object_or_404(Product, id=id, Product_slug=Product_slug, available=True)

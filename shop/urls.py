@@ -13,7 +13,7 @@ urlpatterns = [
     path('checkout/', views.CheckOut, name='checkout'),
     path('contact/', views.Contact, name='contact'),
     path('login/', login_view, name='login'),
-   
+    path('product-status/', views.OrderStatus, name='status'),
     path('register/', register_view, name='register'),
     path('profile/', profile_view, name='profile')
 ]

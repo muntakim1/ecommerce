@@ -1,0 +1,218 @@
+{% load static %}
+{% include 'Headsfoots/header.html' %}
+
+
+		
+	<div class="hero-wrap hero-bread" style="background-image: url('{% static 'images/bg_6.jpg' %}');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Product Orders</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'status' %}">Home</a></span> <span>Product Orders</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+		
+    
+{% for x in OderTracking  %}
+        <div class="container">
+        
+        <br>
+        <br>
+        <h2>Invoice ID : {{ x.InvoiceId }}-{{ x.ProductCode}}</h2>
+        <br>
+
+	<div class="row">
+		<div class="timeline-centered">
+    
+	<article class="timeline-entry">
+		
+		<div class="timeline-entry-inner">
+			<time class="timeline-time" datetime="2014-01-10T03:45"><span>{{ x.Date }}</span> <span>Today</span></time>
+			{% if x.Pending %}
+			<div class="timeline-icon bg-danger">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Panding..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+            {% else %}
+            <div class="timeline-icon bg-success">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Done..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			{% endif %}
+			
+		</div>
+		
+	</article>
+	
+	
+	<article class="timeline-entry">
+		
+		<div class="timeline-entry-inner">
+			<time class="timeline-time" datetime="2014-01-10T03:45"><span>{{ x.Date }}</span> <span>Today</span></time>
+			
+			{% if x.Confirmed %}
+			<div class="timeline-icon bg-success">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Confirmed..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			</div>
+            {% else %}
+            <div class="timeline-icon bg-danger">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Panding..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			</div>
+			{% endif %}
+			
+			
+		</div>
+		
+	</article>
+    	<article class="timeline-entry">
+		
+		<div class="timeline-entry-inner">
+			<time class="timeline-time" datetime="2014-01-10T03:45"><span>{{ x.Date }}</span> <span>Today</span></time>
+			
+			{% if x.Proceesing %}
+			<div class="timeline-icon bg-success">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Proceesing..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			</div>
+            {% else %}
+            <div class="timeline-icon  bg-danger">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Pending..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			</div>
+			{% endif %}
+			
+			
+		</div>
+		
+	</article>
+    	<article class="timeline-entry">
+		
+		<div class="timeline-entry-inner">
+			<time class="timeline-time" datetime="2014-01-10T03:45"><span>{{ x.Date }}</span> <span>Today</span></time>
+			
+			{% if x.Packed %}
+			<div class="timeline-icon bg-success">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Packed..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			</div>
+            {% else %}
+            <div class="timeline-icon bg-danger">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Panding..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			</div>
+			{% endif %}
+			
+			
+		</div>
+		
+	</article>
+    	<article class="timeline-entry">
+		
+		<div class="timeline-entry-inner">
+			<time class="timeline-time" datetime="2014-01-10T03:45"><span>{{ x.Date }}</span> <span>Today</span></time>
+			
+			{% if x.Shipped %}
+			<div class="timeline-icon bg-success">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Shipped..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			</div>
+            {% else %}
+            <div class="timeline-icon bg-danger">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Panding..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			</div>
+			{% endif %}
+			
+			
+		</div>
+		
+	</article>
+     	<article class="timeline-entry">
+		
+		<div class="timeline-entry-inner">
+			<time class="timeline-time" datetime="2014-01-10T03:45"><span>{{ x.Date }}</span> <span>Today</span></time>
+			
+			{% if x.Delivered %}
+			<div class="timeline-icon bg-success">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Shipped..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+            {% else %}
+            <div class="timeline-icon bg-danger">
+				<i class="entypo-feather"></i>
+			</div>
+            <div class="timeline-label">
+				<h2>Panding..</h2>
+				<p> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp;</p>
+			
+			{% endif %}
+			
+			
+			</div>
+		</div>
+		
+	</article>
+	
+	
+	
+	
+</div>
+	</div>
+</div>
+     {% endfor %}  
+		
+		<!-- END -->
+
+
+
+	          
+	          
+ 
+
+{% include 'Headsfoots/footer.html' %}
+

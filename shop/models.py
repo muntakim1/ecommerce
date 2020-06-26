@@ -12,6 +12,9 @@ class Category(models.Model):
         return self.slug
 
 
+
+
+
 # Product
 class Product(models.Model):
     Product_name = models.CharField(max_length=250)
@@ -38,6 +41,22 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.id, self.Product_slug, ])
 
+
+#Order Tracking 
+
+class OderTracking(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    InvoiceId=models.CharField(max_length=250)
+    Date=models.CharField(max_length=250,default="")
+    ProductCode = models.OneToOneField(Product,on_delete=models.CASCADE)
+    Pending = models.BooleanField(default=True)
+    Confirmed = models.BooleanField(default=False)
+    Proceesing = models.BooleanField(default=False)
+    Packed = models.BooleanField(default=False)
+    Shipped = models.BooleanField(default=False)
+    Delivered = models.BooleanField(default=False)
+    def __str__(self):
+        return self.InvoiceId
 
 # Cart
 class Cart(models.Model):
