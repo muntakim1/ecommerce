@@ -90,3 +90,19 @@ class CheckOut(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Transactions(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name  = models.CharField(max_length=255)
+    state_country = models.CharField(max_length=255)
+    street_Address = models.CharField(max_length=255)
+    appertment = models.CharField(max_length=255,null=True)
+    town = models.CharField(max_length=255)
+    postcode = models.CharField(max_length=255)
+    phone=models.CharField(max_length=11)
+    email= models.EmailField()
+    payment_Method = models.CharField(max_length=255)
+    
+
+

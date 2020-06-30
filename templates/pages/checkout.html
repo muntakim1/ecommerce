@@ -66,18 +66,19 @@
         <div class="row justify-content-center">
           <div class="col-xl-8 ftco-animate">
 						<form action="#" class="billing-form bg-light p-3 p-md-5">
+							{% csrf_token %}
 							<h3 class="mb-4 billing-heading">Billing Details</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="firstname">Firt Name</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="first_name" class="form-control" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="lastname">Last Name</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="last_name" class="form-control" placeholder="">
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -86,16 +87,16 @@
 		            		<label for="country">State / Country</label>
 		            		<div class="select-wrap">
 		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                  <select name="" id="" class="form-control">
-		                  	<option value="">Bangladesh</option>
-		                    <option value="">Italy</option>
-		                    <option value="">Philippines</option>
-		                    <option value="">South Korea</option>
-		                    <option value="">Hongkong</option>
-							<option value="">France</option>
-							<option value="">UK</option>
-							<option value="">USA</option>
-							<option value="">INDIA</option>
+		                  <select name="Country" id="" class="form-control">
+		                  	<option value="Bangladesh">Bangladesh</option>
+		                    <option value="Italy">Italy</option>
+		                    <option value="Philippines">Philippines</option>
+		                    <option value="South_Korea">South Korea</option>
+		                    <option value="Hongkong">Hongkong</option>
+							<option value="France">France</option>
+							<option value="UK">UK</option>
+							<option value="USA">USA</option>
+							<option value="INDIA">INDIA</option>
 		                  </select>
 		                </div>
 		            	</div>
@@ -104,38 +105,38 @@
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Street Address</label>
-	                  <input type="text" class="form-control" placeholder="House number and street name">
+	                  <input type="text" name="streetaddress"class="form-control" placeholder="House number and street name">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
+	                  <input type="text" name="appartment" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                	<label for="towncity">Town / City</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="town" class="form-control" placeholder="">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 		            		<label for="postcodezip">Postcode / ZIP *</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="postcode" class="form-control" placeholder="">
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="phone" class="form-control" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="email" class="form-control" placeholder="">
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -181,7 +182,7 @@
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" id="Bank" class="mr-2"> Direct Bank Tranfer</label>
+											   <label><input type="radio" name="payment" id="Bank" class="mr-2"> Direct Bank Tranfer</label>
 											</div>
 										</div>
 									</div>
@@ -189,18 +190,18 @@
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" id="Bkash" class="mr-2"> BKASH</label>
+											   <label><input type="radio" name="payment" id="Bkash" class="mr-2"> BKASH</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="checkbox">
-											   <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+											   <label><input type="checkbox" value="" class="mr-2" required> I have read and accept the terms and conditions</label>
 											</div>
 										</div>
 									</div>
-									<p><a href="{% url 'status' %}"class="btn btn-primary py-3 px-4">Place an order</a></p>
+									<p><a type="submit" href="{% url 'status' %}"class="btn btn-primary py-3 px-4">Place an order</a></p>
 								</div>
 	          	</div>
 	          </div>

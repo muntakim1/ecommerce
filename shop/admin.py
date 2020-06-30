@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import Product, Cart, CheckOut, Category,OderTracking
+from .models import Product, Cart, CheckOut, Category,OderTracking,Transactions
 
 
 #OderTracking
+
+admin.site.register(Transactions)
 admin.site.register(OderTracking)
 
 

@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Cart,OderTracking
+from .models import Product, Cart,OderTracking,Transactions
 from django.contrib.auth.decorators import login_required
 
 
@@ -37,6 +37,23 @@ def About(request):
 
 @login_required(login_url="/login/")
 def CheckOut(request):
+    if request == 'POST':
+        fname = request.POST['first_name']
+        lname =request.POST['last_name']
+        country =request.POST['Country']
+        streetaddress =request.POST['streetaddress']
+        appartment =request.POST['appartment']
+        town =request.POST['town']
+        postcode =request.POST['postcode']
+        phone =request.POST['phone']
+        email =request.POST['email']
+        payment =request.POST['payment']
+        transaction=Transactions.objects.create(first_name=fname,\
+            last_name=lname,state_country=country,\
+            street_Address=streetaddress,appertment=appartment,\
+               town=town,postcode=postcode, phone=phone,\
+                   email=email,payment_Method=payment) 
+        transaction.save() 
     products = Product.objects.all()
     context = {
         'products': products
@@ -58,3 +75,4 @@ def Product_Details(request, id, Product_slug):
 
 def Contact(request):
     return render(request, "pages/contact.html")
+
