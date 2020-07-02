@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'sheShop.wsgi.application'
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'sheshop',
 #         'USER': 'postgres',
-#         'PASSWORD': 'pranto172472',
+#         'PASSWORD': '',
 #         'PORT': '',
 #         'HOST': 'localhost'
 #     }

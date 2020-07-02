@@ -13,9 +13,9 @@ def index(request):
 
 def Cart_View(request):
     products = Product.objects.filter(category=request.GET.get('category'))
-
+    new_arrival = Product.objects.filter(new_Arraivel=True)
     mycontext = {
-        'products': products
+        'products': new_arrival
     }
     return render(request, "pages/cart.html", mycontext)
 

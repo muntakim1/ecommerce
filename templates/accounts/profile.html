@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-		{% for x in profile %}
+		
         
 		<section class="ftco-section">
       <div class="container">
@@ -22,10 +22,12 @@
           
           <div class="row">
           <div class="col-md-6">
-          <img src="{{x.image}}" height=300 weight=300> 
+		  <img src="{{profile.image.url}}" height="150" width="150" alt="delete" />
           
           </div>
+		  
           <div class="col-md-6">
+		  
           <table class="table">
     <thead>
       <tr>
@@ -49,9 +51,9 @@
           
           </div>
           </div>
-		<form action="{% url 'profile' %}" method="post" class="billing-form bg-light p-3 p-md-5">
+		<form action="{% url 'profile' %}" method="post"  enctype="multipart/form-data" class="billing-form bg-light p-3 p-md-5">
         {% csrf_token %}
-							<h3 class="mb-4 billing-heading">Profile Details</h3>
+			<h3 class="mb-4 billing-heading">Profile Details</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-12">
 	                <div class="form-group">
@@ -64,16 +66,24 @@
                   <div class="col-md-12">
 	                <div class="form-group">
 	                	<label for="firstname">Full Name</label>
-	                  <input name="fullname" type="text" class="form-control" value="{{x.full_name}}">
+	                  <input name="fullname" type="text" class="form-control" value="{{ profile.full_name }}">
 	                </div>
 	              </div>
-	              
+	              <div class="w-100"></div>
+		            <div class="col-md-12">
+		            	<div class="form-group">
+		            		<label name="file" for="profile_pic">Update Profile Picture</label>
+		            		
+		                  <input type="file" name="pimage" class="form-control">
+		                
+		            	</div>
+		            </div>
                 <div class="w-100"></div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
 		            		<label name="country" for="country">State / Country</label>
 		            		
-		                  <input type="text" class="form-control" value="{{x.country}}">
+		                  <input type="text" name="Country" class="form-control" value="{{ profile.country }}">
 		                
 		            	</div>
 		            </div>
@@ -81,7 +91,7 @@
 		            <div class="col-md-12">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Street Address</label>
-	                  <input name="address" type="text" class="form-control" value="{{x.address}}">
+	                  <input name="address" type="text" class="form-control" value="{{ profile.address }}">
 	                </div>
 		            </div>
 		            
@@ -90,26 +100,26 @@
 		            <div class="col-md-12">
 		            	<div class="form-group">
 	                	<label for="towncity">Town / City</label>
-	                  <input name="city" type="text" class="form-control" value="{{x.city}}">
+	                  <input name="city" type="text" class="form-control" value="{{ profile.city }}">
 	                </div>
 		            </div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
 		            		<label for="postcodezip">Postcode / ZIP *</label>
-	                  <input name="zipcode" type="text" class="form-control" value="{{x.zipcode}}">
+	                  <input name="zipcode" type="text" class="form-control" value="{{ profile.zipcode }}">
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-12">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <input name="phone" type="tel" class="form-control" value="{{x.phone}}">
+	                  <input name="phone" type="tel" class="form-control" value="{{profile.phone}}">
 	                </div>
 	              </div>
 	              <div class="col-md-12">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <input name="email" type="email" class="form-control" value="{{x.email}}">
+	                  <input name="email" type="email" class="form-control" value="{{profile.email}}" >
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -130,7 +140,7 @@
         </div>
       </div>
     </section> <!-- .section -->
-{% endfor %}
+
  
 
 {% include 'Headsfoots/footer.html' %}

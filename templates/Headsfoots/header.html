@@ -68,7 +68,7 @@
                   <span class="icon-shopping_cart"></span> Cart [<span class="total-count"></span>]</a>
               </li>
                 {% if user.is_authenticated %}
-                    
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="{% url 'profile' %}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.get_username }}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
