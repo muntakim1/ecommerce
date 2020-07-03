@@ -22,8 +22,8 @@
           
           <div class="row">
           <div class="col-md-6">
-		  <img src="{{profile.image.url}}" height="150" width="150" alt="delete" />
-          
+		  <img src="{{profile.image.url}}" height="150" width="150" class="m-3" style="border-radius: 50%;" alt="delete" />
+          <div class='m-2'><h3>{{profile.full_name}}</h3></diV>
           </div>
 		  
           <div class="col-md-6">
@@ -32,20 +32,16 @@
     <thead>
       <tr>
         <th>Total Buy</th>
-        <th>Last Buy</th>
+        
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>12000 tk</td>
-        <td>12999 tk</td>
+        <td>{{ transaction.Total__sum}} tk</td>
+        
         
       </tr>
-      <tr>
-        <td>2100 tk</td>
-        <td>4200 tk</td>
-        
-      </tr>
+    
     </tbody>
   </table>
           

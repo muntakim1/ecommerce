@@ -3,9 +3,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from .models import Profile
+from shop.models import Transactions
 from django.contrib.auth.forms import UserCreationForm
 from django.core.files.storage import FileSystemStorage
-
+from django.db.models import Sum
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
@@ -68,9 +69,11 @@ def profile_view(request):
             profile[0].phone      = phone
             profile[0].email      = email
             profile[0].save()
-        
+        transactions = Transactions.objects.filter(user=current_user).aggregate(Sum('Total'))    
+        print(transactions)
         mycontext = {
                 'profile': profile[0],
+                'transaction':transactions
             }
         return render(request, "accounts/profile.html",mycontext)
         

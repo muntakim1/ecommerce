@@ -37,7 +37,9 @@ def About(request):
 
 @login_required(login_url="/login/")
 def CheckOut(request):
-    if request == 'POST':
+    current_user = request.user
+    if request.method == 'POST':
+        transactions = Transactions.objects.get_or_create(user=current_user)
         fname = request.POST['first_name']
         lname =request.POST['last_name']
         country =request.POST['Country']
@@ -46,17 +48,26 @@ def CheckOut(request):
         town =request.POST['town']
         postcode =request.POST['postcode']
         phone =request.POST['phone']
+        total =request.POST['money']
         email =request.POST['email']
         payment =request.POST['payment']
-        transaction=Transactions.objects.create(first_name=fname,\
-            last_name=lname,state_country=country,\
-            street_Address=streetaddress,appertment=appartment,\
-               town=town,postcode=postcode, phone=phone,\
-                   email=email,payment_Method=payment) 
-        transaction.save() 
+        
+        transactions[0].first_name=fname
+        transactions[0].last_name=lname
+        transactions[0].state_country=country
+        transactions[0].street_Address=streetaddress
+        transactions[0].appertment=appartment
+        transactions[0].town=town
+        transactions[0].postcode=postcode
+        transactions[0].phone=phone
+        transactions[0].email=email
+        transactions[0].payment_Method=payment
+        transactions[0].Total=total
+        print(transactions[0].appertment)
+        transactions[0].save() 
     products = Product.objects.all()
     context = {
-        'products': products
+        'products': products,
     }
     return render(request, "pages/checkout.html",context)
 

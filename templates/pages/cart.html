@@ -54,22 +54,18 @@
     				<div class="cart-total mb-3">
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
-    						<span>Subtotal</span> $
-    						<span class="total-cart">0</span>
-    					</p>
-    					<p class="d-flex">
-    						<span>Delivery</span>
-    						<span>$0.00</span>
-    					</p>
-    					<p class="d-flex">
-    						<span>Discount</span>
-    						<span>$3.00</span>
-    					</p>
-    					<hr>
-    					<p class="d-flex total-price">
-    						<span>Total</span>
-    						<span>$17.60</span>
-    					</p>
+    						<span>Subtotal</span>
+		    						$<span class="total-cart" id="subtotal">20.60</span>
+		    					</p>
+		    					<p class="d-flex">
+		    						<span>Delivery</span>$
+		    						<span id="delivery">99.0</span>
+		    					</p>
+		    					<hr>
+		    					<p class="d-flex total-price">
+		    						<span>Total</span>
+		    						$<input type="text" id="total" name="total" value="" style="border:none;" disabled>
+		    					</p>
     				</div>
     				<p class="text-center"><a href="{% url 'checkout' %}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
     			</div>
@@ -401,6 +397,15 @@ $('.show-cart').on("change", ".item-count", function(event) {
 
 displayCart();
 
+var subtotal = parseFloat(document.getElementById('subtotal').innerHTML);
+var delivery = parseFloat(document.getElementById('delivery').innerHTML);
 
+window.onload=  totalcart();
+
+
+function totalcart(){
+	document.getElementById('total').value= (subtotal+delivery).toFixed(2)
+	console.log((subtotal+delivery).toFixed(2))
+}
 	</script>
     {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Cart, CheckOut, Category,OderTracking,Transactions
+from .models import Product, Cart, Category,OderTracking,Transactions
 
 
 #OderTracking
@@ -35,10 +35,4 @@ class CartAdmin(admin.ModelAdmin):
 admin.site.register(Cart, CartAdmin)
 
 
-# Checkout admin class
-class CheckoutAdmin(admin.ModelAdmin):
-    search_fields = ['user', 'Country', ]
-    list_filter = ['user', 'Country', 'Payment_Method', 'City']
 
-
-admin.site.register(CheckOut, CheckoutAdmin)

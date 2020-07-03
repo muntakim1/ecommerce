@@ -73,26 +73,12 @@ class Cart(models.Model):
         return self.Product_Code
 
 
-# Check_out
+# Transactions
 
-class CheckOut(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    Country = models.CharField(max_length=240)
-    Street_Address = models.CharField(max_length=250)
-    City = models.CharField(max_length=20)
-    ZIP_Code = models.CharField(max_length=10)
-    Phone = models.CharField(max_length=15)
-    Email = models.EmailField()
-    Payment_Method = models.CharField(max_length=240)
-    Delivery_Charge = models.DecimalField(max_digits=4, decimal_places=2)
-    Discount = models.DecimalField(max_digits=4, decimal_places=2)
-    Total = models.DecimalField(max_digits=4, decimal_places=2)
-
-    def __str__(self):
-        return self.user.username
 
 
 class Transactions(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,default="")
     first_name = models.CharField(max_length=255)
     last_name  = models.CharField(max_length=255)
     state_country = models.CharField(max_length=255)
@@ -103,6 +89,5 @@ class Transactions(models.Model):
     phone=models.CharField(max_length=11)
     email= models.EmailField()
     payment_Method = models.CharField(max_length=255)
+    Total = models.CharField(max_length=255)
     
-
-
